@@ -42,9 +42,9 @@ Composition API
 ```bash
 - [] Forms : Vue validatate
 - [] Routing : Vue Router
-- [] SSR : Nuxt
-- [] SSG : Vuepress
+- [x] SSR : Nuxt
+- [x] SSG : Vuepress
 - [] Styling : Element UI
-- [] Mobile : Capacitor
+- [x] Mobile : Capacitor
 - [] API Calls : Vue Relay / axios
 ```
