@@ -18,8 +18,8 @@ Autres
 - [] Conditionnal Rendering ( v-if)
 - [] Rendering Lists
 - [] Lifecycle hooks
-- [] Forms Handling
-- [] Events Handling
+- [x] Forms Handling
+- [x] Events Handling
 
 ```
 

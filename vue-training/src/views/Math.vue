@@ -1,5 +1,6 @@
 <template>
     <div class="math">
+        <h1>Math App</h1>
         <Imc/>
         <Temperature/>
         <Calculatrice/>
