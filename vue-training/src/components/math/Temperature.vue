@@ -9,6 +9,9 @@
         <input type="text">
         <button v-on:click="fahrenheitToCelsius">Convertir</button>
     </form>
+    <div class="conversion-result">
+
+    </div>
   </div>
 </template>
 

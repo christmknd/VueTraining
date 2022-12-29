@@ -2,16 +2,23 @@
   <h2>IMC</h2>
   <form>
     <label>Votre Taille</label>
-    <input type="text" placeholder="indiquer votre taille en cm"> <br/><br/>
+    <input v-model="taille" type="text" placeholder="indiquer votre taille en cm"> <br/><br/>
     <label>Votre Poids</label>
-    <input type="text" placeholder="indiquer votre poids en kg"> <br/><br/>
-    <button v-on:click="imc">Entrer</button>
+    <input v-model="poids" type="text" placeholder="indiquer votre poids en kg"> <br/><br/>
+    <button @click="imc(taille,poids)">Entrer</button>
   </form>
+  
 </template>
 
 <script>
 export default {
     name: 'Imc', 
+    data(){
+        return {
+            taille: '',
+            poids: '',
+        }
+    },
     methods: {
         imc(taille, poids) {
             if (typeof(taille) === Number || typeof(poids) === Number ) {
@@ -23,7 +30,7 @@ export default {
                 return  result = poids / (Math.pow(taille,2)) 
             }
             }
-            
+            console.log(result)
         }
     }
 }
