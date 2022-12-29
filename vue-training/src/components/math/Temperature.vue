@@ -1,9 +1,13 @@
 <template>
-  <Tutorial/>
+  
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
+    name : 'Temperature'
 }
 </script>
+
+<style>
+
+</style>

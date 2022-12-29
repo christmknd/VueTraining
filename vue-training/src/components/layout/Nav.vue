@@ -1,7 +1,8 @@
 <template>
     <nav>
-        <li>Home</li>
-        <li>Movies</li>
+            <router-link to="/">Home</router-link> 
+            <router-link to="/math" >Math</router-link>  
+            <router-link to="/todo">Todolist</router-link> 
     </nav>
 </template>
 
