@@ -5,10 +5,10 @@
     <input v-model="taille" id="taille" type="text" placeholder="indiquer votre taille en cm"> <br/><br/>
     <label for="poids">Votre Poids (kg)</label>
     <input v-model="poids" id="poids" type="text" placeholder="indiquer votre poids en kg"> <br/><br/>
-    <button type="submit">Entrer</button>
+    <button id="convert-button" type="submit">Entrer</button>
   </form>
   <div class="imc-result">
-    <span><p v-if="imc !== null"> Votre imc est de {{ imc }}</p></span>
+    <span><p v-if="imc !== null" id="p-result"> Votre imc est de {{ imc }}</p></span>
   </div>
   
 </template>
@@ -17,6 +17,7 @@
 import { ref } from 'vue'
 
 export default {
+    name: 'Imc',
     setup(){
 
         let taille = ref(0)

@@ -4,7 +4,7 @@
         <form @submit.prevent="fahrenheitToCelsius()">
             <label for="celsius">Celsius to Fahrenheit</label>
             <input v-model="celsius" type="text">
-            <button type="submit">Convertir</button> 
+            <button class="conversion-celsius" type="submit">Convertir</button> 
             <br/><br/>
             <div class="fahr-result">
             <span><p v-if="ftoc !== null"> Temperature : {{ ftoc }} Farhenheit</p></span>
@@ -15,7 +15,7 @@
         <form @submit.prevent="celsiusToFahrenheit()">
             <label class="fahreinheit">Fahrenheit to Celsius</label>
             <input v-model="fahreinheit" type="text">
-            <button type="submit">Convertir</button>
+            <button class="conversion-fahr" type="submit">Convertir</button>
             <br/><br/>
             <div class="celsius-result">
             <span><p v-if="ctof !== null">Temperature :  {{ ctof }} Celsius</p></span>
@@ -38,13 +38,11 @@ export default {
     
 
        function fahrenheitToCelsius() {
-            let f = fahreinheit.value
-            return ftoc.value = (f - 32) / 1.8
+            return ftoc.value = (fahreinheit.value - 32) / 1.8
         }
 
         function celsiusToFahrenheit () {
-            let c = celsius.value 
-            return ctof.value = (c * 1.8) + 32
+            return ctof.value = (celsius.value * 1.8) + 32
         }
 
         return {
