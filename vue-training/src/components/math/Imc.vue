@@ -1,41 +1,53 @@
 <template>
   <h2>IMC</h2>
-  <form>
-    <label>Votre Taille</label>
-    <input v-model="taille" type="text" placeholder="indiquer votre taille en cm"> <br/><br/>
-    <label>Votre Poids</label>
-    <input v-model="poids" type="text" placeholder="indiquer votre poids en kg"> <br/><br/>
-    <button @click="imc(taille,poids)">Entrer</button>
+  <form @submit.prevent="imcCalcul()">
+    <label for="taille">Votre Taille (en cm)</label>
+    <input v-model="taille" id="taille" type="text" placeholder="indiquer votre taille en cm"> <br/><br/>
+    <label for="poids">Votre Poids (kg)</label>
+    <input v-model="poids" id="poids" type="text" placeholder="indiquer votre poids en kg"> <br/><br/>
+    <button type="submit">Entrer</button>
   </form>
+  <div class="imc-result">
+    <span><p v-if="imc !== null"> Votre imc est de {{ imc }}</p></span>
+  </div>
   
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
-    name: 'Imc', 
-    data(){
-        return {
-            taille: '',
-            poids: '',
+    setup(){
+
+        let taille = ref(0)
+        let poids = ref(0)
+        let imc = ref(null)
+
+        function imcCalcul() {
+           
+        let p = poids.value
+        let t = taille.value / 100
+
+        return imc.value =  Math.round(p / (Math.pow(t,2)))
+    
         }
-    },
-    methods: {
-        imc(taille, poids) {
-            if (typeof(taille) === Number || typeof(poids) === Number ) {
-                alert('Le taille et/ou le poids doivent être des nombres')
-            } else {
-                if (taille < 0) {
-                alert('La taille d\'une personne ne peux pas être à inférieur ou égal à zéro')
-            } else {
-                return  result = poids / (Math.pow(taille,2)) 
-            }
-            }
-            console.log(result)
+
+        return {
+            poids,
+            taille,
+            imc,
+            imcCalcul
         }
     }
 }
 </script>
 
 <style>
+input {
+    padding: 2px;
+}
 
+label {
+    padding: 10px;
+}
 </style>

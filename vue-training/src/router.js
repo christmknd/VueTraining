@@ -3,7 +3,7 @@ import * as  VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
 import Math from '@/views/Math.vue';
 import Todolist from '@/views/Todolist.vue';
-//import PageNotFound from '@/views/PageNotFound.vue'
+import PageNotFound from '@/views/PageNotFound.vue'
 
 const routes = [
     {
@@ -21,6 +21,11 @@ const routes = [
         name: 'Todolist',
         component: Todolist
     }, 
+    {
+        path: '/:catchAll(.*)',
+        name: 'PageNotFound',
+        component: PageNotFound
+    }
 ]
 
 const router = VueRouter.createRouter({

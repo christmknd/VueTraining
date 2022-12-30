@@ -1,51 +1,59 @@
 <template>
   <div class="temperature">
     <h2>Temperature</h2>
-    <form class="conversion">
-        <label class="celsius-to-fahr">Celsius to Fahrenheit</label>
-        <input type="text">
-        <button v-on:click="celsiusToFahrenheit">Convertir</button> <br/><br/>
-        <label class="fahr-to-celsius">Fahrenheit to Celsius</label>
-        <input type="text">
-        <button v-on:click="fahrenheitToCelsius">Convertir</button>
-    </form>
-    <div class="conversion-result">
+        <form @submit.prevent="fahrenheitToCelsius()">
+            <label for="celsius">Celsius to Fahrenheit</label>
+            <input v-model="celsius" type="text">
+            <button type="submit">Convertir</button> 
+            <br/><br/>
+            <div class="fahr-result">
+            <span><p v-if="ftoc !== null"> Temperature : {{ ftoc }} Farhenheit</p></span>
+            </div>
+        </form>
+       
 
+        <form @submit.prevent="celsiusToFahrenheit()">
+            <label class="fahreinheit">Fahrenheit to Celsius</label>
+            <input v-model="fahreinheit" type="text">
+            <button type="submit">Convertir</button>
+            <br/><br/>
+            <div class="celsius-result">
+            <span><p v-if="ctof !== null">Temperature :  {{ ctof }} Celsius</p></span>
+            </div>
+        </form>
+       
     </div>
-  </div>
 </template>
 
 <script>
- 
+import { ref } from 'vue';
 export default {
-    name : 'Temperature',
-    methods: {
-        fahrenheitToCelsius (fahreinheit) {
-            let tmp1 , tmp2 , result ;
-            if (typeof(fahreinheit) !== 'number' ) {
-                return 'fahreinheit is undifined';
-            } else {
-                tmp1 = fahreinheit - 32;
-                tmp2 = tmp1 / 9;
-                result = tmp2 * 5;
-            }
-            return result;
-        },
-        celsiusToFahrenheit (celsius) {
-            let tmp1 , tmp2 , result ;
-            if (typeof(celsius) !== 'number' ) {
-                return 'celsius is undifined';
-            } else {
-                if (celsius === 0 ) {
-                    return  32;
-                } else {
-                    tmp1 = celsius * 9 ;
-                    tmp2 = tmp1 /5 ;
-                    result = tmp2 + 32;
-            
-                    return result
-                }
-            }    
+    setup(){
+
+        let fahreinheit = ref(0)
+        let ftoc = ref(null)
+
+        let celsius = ref(0)
+        let ctof = ref(null)
+    
+
+       function fahrenheitToCelsius() {
+            let f = fahreinheit.value
+            return ftoc.value = (f - 32) / 1.8
+        }
+
+        function celsiusToFahrenheit () {
+            let c = celsius.value 
+            return ctof.value = (c * 1.8) + 32
+        }
+
+        return {
+            celsius, 
+            fahreinheit,
+            ctof,
+            ftoc,
+            fahrenheitToCelsius,
+            celsiusToFahrenheit
         }
     }
 }
@@ -55,4 +63,12 @@ export default {
 .conversion {
   padding: 10px;
 } 
+
+input {
+    padding: 2px;
+}
+
+label {
+    padding: 10px;
+}
 </style>

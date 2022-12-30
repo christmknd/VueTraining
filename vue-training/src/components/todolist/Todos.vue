@@ -9,7 +9,7 @@
     <div class="todo-result">
       <h2>My Todolist</h2>
       <ul class="list">
-        <li v-for="todo in todos" :key="todo.id">
+        <li v-for="todo in todos" :key="todo.id" class="list-item">
           <span>{{ todo.name }}</span>
           <button @click="deleteTodo(todo.id)">Delete</button>
         </li>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 export default {
   setup(){
@@ -53,5 +53,12 @@ export default {
 </script>
 
 <style>
+ul {
+  list-style-type: none;
+}
 
+
+span {
+  padding: 10px;
+}
 </style>
