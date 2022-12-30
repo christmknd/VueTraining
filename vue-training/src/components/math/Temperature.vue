@@ -1,24 +1,24 @@
 <template>
   <div class="temperature">
     <h2>Temperature</h2>
-        <form @submit.prevent="fahrenheitToCelsius()">
+        <form @submit.prevent="celsiusToFahrenheit">
             <label for="celsius">Celsius to Fahrenheit</label>
-            <input v-model="celsius" type="text">
+            <input v-model.number="celsius" type="text">
             <button class="conversion-celsius" type="submit">Convertir</button> 
             <br/><br/>
             <div class="fahr-result">
-            <span><p v-if="ftoc !== null"> Temperature : {{ ftoc }} Farhenheit</p></span>
+            <span><p v-if="ctof !== null"> Temperature : {{ ctof }} Farhenheit</p></span>
             </div>
         </form>
        
 
-        <form @submit.prevent="celsiusToFahrenheit()">
+        <form @submit.prevent="fahrenheitToCelsius">
             <label class="fahreinheit">Fahrenheit to Celsius</label>
-            <input v-model="fahreinheit" type="text">
+            <input v-model.number="fahreinheit">
             <button class="conversion-fahr" type="submit">Convertir</button>
             <br/><br/>
             <div class="celsius-result">
-            <span><p v-if="ctof !== null">Temperature :  {{ ctof }} Celsius</p></span>
+            <span><p v-if="ftoc !== null" >Temperature :  {{ ftoc }} Celsius</p></span>
             </div>
         </form>
        
@@ -31,19 +31,22 @@ export default {
     setup(){
 
         let fahreinheit = ref(0)
-        let ftoc = ref(null)
+        let ftoc = ref(0)
 
         let celsius = ref(0)
-        let ctof = ref(null)
+        let ctof = ref(0)
     
+        function celsiusToFahrenheit () {
+            if (celsius.value > 0) {
+              return ctof.value = (celsius.value * 1.8) + 32
+            }
+        }
 
        function fahrenheitToCelsius() {
             return ftoc.value = (fahreinheit.value - 32) / 1.8
         }
 
-        function celsiusToFahrenheit () {
-            return ctof.value = (celsius.value * 1.8) + 32
-        }
+      
 
         return {
             celsius, 
