@@ -2,7 +2,16 @@
 
 ## Usage
 
-Appli qui represente une dabatabase de film
+Le projet est divisé en 2 grosses applis :
+
+```bash
+Math :
+- IMC
+- Conversion de températures
+- Compteur
+
+Todolist
+```
 
 ## Fondamentaux
 
@@ -24,10 +33,10 @@ API StylesAutres
 
 ```bash
 Composition API
-- [x] ref : fonction fournie par Vue.js qui permet de créer une référence à une variable
-- [x] reactive : fonction fournie par Vue.js qui permet de rendre une variable ou un objet réactif
-- [x] computed : fonction fournie par Vue.js qui permet de définir des propriétés calculées dans un composant
-- [x] watch : permet de définir une fonction qui sera appelée lorsque la valeur d'\une propriété ou d'\une expression spécifiée change
+- [x] ref
+- [] reactive
+- [x] computed
+- [] watch :
 
 En résumé :
 ref : utilisé pour créer des références réactives à des variables individuelles
